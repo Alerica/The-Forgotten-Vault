@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 0ad477067a6b9e24b9c2cb745817684d, type: 2}
   gameConfig: {fileID: 11400000, guid: 5eac80f3f7db6474ca870245cf9b2868, type: 2}
+  cameraTransform: {fileID: 1938924726}
 --- !u!114 &98270226
 MonoBehaviour:
   m_ObjectHideFlags: 0

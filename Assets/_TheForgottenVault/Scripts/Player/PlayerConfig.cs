@@ -7,6 +7,8 @@ public class PlayerConfig : ScriptableObject
     public float moveSpeed = 6f;
     public float acceleration = 10f;
     public float deceleration = 12f;
+    public float rotationSpeed = 10f;
+
 
     [Header("Jump")]
     public float jumpForce = 7f;

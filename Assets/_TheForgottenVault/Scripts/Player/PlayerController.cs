@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerConfig config;
     [SerializeField] private GameConfig gameConfig;
+    [SerializeField] private Transform cameraTransform;
 
     private CharacterController controller;
     private PlayerInputHandler input;
@@ -45,6 +46,28 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moveDir = new Vector3(move.x, 0, move.y);
 
+        Vector3 camForward = cameraTransform.forward;
+        Vector3 camRight = cameraTransform.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward.Normalize();
+        camRight.Normalize();
+
+        moveDir = camForward * move.y + camRight * move.x;
+
+        if (moveDir.sqrMagnitude > 0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                config.rotationSpeed * Time.deltaTime
+            );
+        }
+
         Vector3 targetVelocity = moveDir * config.moveSpeed;
 
         velocity = Vector3.Lerp(
@@ -76,6 +99,12 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(
             transform.position,
             transform.position + transform.forward * 2f
+        );
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(
+            transform.position,
+            transform.position + velocity
         );
     }
     #endif
