@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         groundCheck = GetComponent<PlayerGroundCheck>();
-        jump = GetComponent<PlayerJump>();
+        jump = GetComponent<PlayerJump>(); 
         dash = GetComponent<PlayerDash>();
         controller = GetComponent<CharacterController>();
         input = GetComponent<PlayerInputHandler>();
