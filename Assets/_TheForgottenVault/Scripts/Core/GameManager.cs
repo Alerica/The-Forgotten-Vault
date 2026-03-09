@@ -1,10 +1,13 @@
 using System;
+using Unity.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public GameState CurrentState { get; private set; }
+
+    public GameState _currentState;
+    public GameState CurrentState { get => _currentState; set => _currentState = value; }
     public static event Action<GameState> OnGameStateChanged;
 
     private void Awake()

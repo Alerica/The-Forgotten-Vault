@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 0ad477067a6b9e24b9c2cb745817684d, type: 2}
-  gravity: -20
+  gameConfig: {fileID: 11400000, guid: 5eac80f3f7db6474ca870245cf9b2868, type: 2}
 --- !u!114 &98270226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +257,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  _isGrounded: 0
 --- !u!1 &162719325
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fd4356be8a7544ba2fe9e6bbb4d10f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentState: 1
 --- !u!4 &978369099
 Transform:
   m_ObjectHideFlags: 0

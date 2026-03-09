@@ -15,9 +15,9 @@ MonoBehaviour:
   moveSpeed: 6
   acceleration: 10
   deceleration: 12
-  jumpForce: 500
-  jumpHoldForce: 7
-  maxJumpTime: 5
+  jumpForce: 12
+  jumpHoldForce: 2
+  maxJumpTime: 1
   allowDash: 1
   dashForce: 12
   dashDuration: 0.2

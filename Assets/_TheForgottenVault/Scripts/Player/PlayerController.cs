@@ -4,13 +4,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerConfig config;
+    [SerializeField] private GameConfig gameConfig;
 
     private CharacterController controller;
     private PlayerInputHandler input;
 
     private Vector3 velocity;
-
-    [SerializeField] private float gravity = -20f;
 
     private float verticalVelocity;
     private PlayerGroundCheck groundCheck;
@@ -67,7 +66,7 @@ public class PlayerController : MonoBehaviour
             verticalVelocity = -2f;
         }
 
-        verticalVelocity += gravity * Time.deltaTime;
+        verticalVelocity += gameConfig.gravity * Time.deltaTime;
     }
 
     #if UNITY_EDITOR
