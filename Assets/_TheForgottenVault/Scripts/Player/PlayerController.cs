@@ -10,8 +10,18 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 velocity;
 
+    [SerializeField] private float gravity = -20f;
+
+    private float verticalVelocity;
+    private PlayerGroundCheck groundCheck;
+    private PlayerJump jump;
+    private PlayerDash dash;
+
     private void Awake()
     {
+        groundCheck = GetComponent<PlayerGroundCheck>();
+        jump = GetComponent<PlayerJump>();
+        dash = GetComponent<PlayerDash>();
         controller = GetComponent<CharacterController>();
         input = GetComponent<PlayerInputHandler>();
     }
@@ -20,6 +30,12 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance.CurrentState != GameState.Playing)
             return;
+
+       
+
+        jump.HandleJump(ref verticalVelocity);
+
+        ApplyGravity();
 
         HandleMovement();
     }
@@ -38,6 +54,30 @@ public class PlayerController : MonoBehaviour
             config.acceleration * Time.deltaTime
         );
 
-        controller.Move(velocity * Time.deltaTime);
+        Vector3 finalMove = velocity;
+        finalMove.y = verticalVelocity;
+
+        controller.Move(finalMove * Time.deltaTime);
     }
+
+    private void ApplyGravity()
+    {
+        if (groundCheck.IsGrounded && verticalVelocity < 0)
+        {
+            verticalVelocity = -2f;
+        }
+
+        verticalVelocity += gravity * Time.deltaTime;
+    }
+
+    #if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(
+            transform.position,
+            transform.position + transform.forward * 2f
+        );
+    }
+    #endif
 }

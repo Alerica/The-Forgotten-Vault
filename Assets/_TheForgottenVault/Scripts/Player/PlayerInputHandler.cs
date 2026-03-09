@@ -7,6 +7,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 MoveInput { get; private set; }
     public bool JumpPressed { get; private set; }
     public bool JumpHeld { get; private set; }
+    public bool DashPressed { get; private set; }
 
     private void Awake()
     {
@@ -31,11 +32,15 @@ public class PlayerInputHandler : MonoBehaviour
             JumpPressed = false;
             JumpHeld = false;
         };
+
+        inputActions.Player.Dash.performed += ctx => 
+            DashPressed = true;
     }
 
     private void Update()
     {
         JumpHeld = inputActions.Player.Jump.IsPressed();
+        DashPressed = false;
     }
 
     private void OnDisable()

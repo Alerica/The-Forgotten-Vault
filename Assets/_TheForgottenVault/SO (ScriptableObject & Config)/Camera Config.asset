@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551396f5b9d5fa0408eb73e360fcf297, type: 3}
   m_Name: Camera Config
   m_EditorClassIdentifier: 
-  cameraDistance: 5
-  cameraHeight: 2
   sensitivityX: 200
   sensitivityY: 150
+  cameraDistance: 5
   minVerticalAngle: -30
   maxVerticalAngle: 60
