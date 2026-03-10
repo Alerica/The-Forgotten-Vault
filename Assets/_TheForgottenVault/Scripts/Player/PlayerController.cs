@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -6,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerConfig config;
     [SerializeField] private GameConfig gameConfig;
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Animator  animator;
 
     private CharacterController controller;
     private PlayerInputHandler input;
@@ -80,6 +82,8 @@ public class PlayerController : MonoBehaviour
         finalMove.y = verticalVelocity;
 
         controller.Move(finalMove * Time.deltaTime);
+
+        animator.SetFloat("Speed", (Math.Abs(controller.velocity.x) + Math.Abs(controller.velocity.z)) / 2);
     }
 
     private void ApplyGravity()

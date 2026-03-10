@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     [SerializeField] private PlayerConfig config;
+    [SerializeField] private Animator animator;
 
     private PlayerGroundCheck groundCheck;
     private PlayerInputHandler input;
@@ -26,6 +27,8 @@ public class PlayerJump : MonoBehaviour
             jumpTimer = 0f;
 
             verticalVelocity = config.jumpForce;
+
+            animator.SetTrigger("Jump");
         }
 
         if (isJumping && input.JumpHeld)

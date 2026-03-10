@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2541f775f41d541a2e85a2b149c039, type: 3}
   m_Name: Player Config
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  acceleration: 10
-  deceleration: 12
+  moveSpeed: 15
+  acceleration: 1.5
+  deceleration: 300
   rotationSpeed: 10
   jumpForce: 12
   jumpHoldForce: 2
   maxJumpTime: 1
   allowDash: 1
   dashForce: 12
-  dashDuration: 0.2
+  dashDuration: 0.8
   dashInvincibilityTime: 0.15
   maxHP: 100
   attackDamage: 20

@@ -6,8 +6,8 @@ public class PlayerGroundCheck : MonoBehaviour
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRadius = 0.25f;
     [SerializeField] private LayerMask groundLayer;
-
     [SerializeField] private bool _isGrounded;
+    [SerializeField] private Animator animator;
 
     public bool IsGrounded  { get => _isGrounded; set => _isGrounded = value; }
 
@@ -18,6 +18,11 @@ public class PlayerGroundCheck : MonoBehaviour
             groundCheckRadius,
             groundLayer
         );
+
+        if(IsGrounded) 
+            animator.SetBool("InAir", false);
+        else
+            animator.SetBool("InAir", true);
     }
 
 
