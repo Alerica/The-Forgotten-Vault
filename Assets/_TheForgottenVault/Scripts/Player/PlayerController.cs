@@ -33,9 +33,8 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance.CurrentState != GameState.Playing)
             return;
 
-       
-
         jump.HandleJump(ref verticalVelocity);
+        dash.HandleDash(ref velocity);
 
         ApplyGravity();
 
@@ -72,12 +71,15 @@ public class PlayerController : MonoBehaviour
 
         Vector3 targetVelocity = moveDir * config.moveSpeed;
 
+       float accelRate = moveDir.sqrMagnitude > 0.01f 
+        ? config.acceleration 
+        : config.deceleration;
+
         velocity = Vector3.Lerp(
             velocity,
             targetVelocity,
-            config.acceleration * Time.deltaTime
+            accelRate * Time.deltaTime
         );
-
         Vector3 finalMove = velocity;
         finalMove.y = verticalVelocity;
 

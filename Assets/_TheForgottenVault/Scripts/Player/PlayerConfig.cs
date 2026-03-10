@@ -17,9 +17,9 @@ public class PlayerConfig : ScriptableObject
 
     [Header("Dash")]
     public bool allowDash = true;
-    public float dashForce = 12f;
+    public float dashSpeed = 12f;
     public float dashDuration = 0.2f;
-    public float dashInvincibilityTime = 0.15f;
+    public float dashCooldown = 1.0f;
 
     [Header("Combat")]
     public int maxHP = 100;

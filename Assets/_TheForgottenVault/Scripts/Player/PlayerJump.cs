@@ -29,6 +29,8 @@ public class PlayerJump : MonoBehaviour
             verticalVelocity = config.jumpForce;
 
             animator.SetTrigger("Jump");
+
+            if(GameManager.Instance.DebugMode) Debug.Log("Jump");
         }
 
         if (isJumping && input.JumpHeld)
