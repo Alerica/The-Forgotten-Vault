@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Camera Config
   m_EditorClassIdentifier: 
   sensitivityX: 200
-  sensitivityY: 450
+  sensitivityY: 200
   cameraDistance: 12
   minVerticalAngle: -60
   maxVerticalAngle: 200
