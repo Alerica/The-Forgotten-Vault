@@ -37,6 +37,11 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         ChangeState(GameState.GameOver);
+        Time.timeScale = 0f;
+
+        UIManager.Instance.ShowGameOver();
+        
+        if(DebugMode) Debug.Log($"Game Over");
     }
 
     public void WinGame()

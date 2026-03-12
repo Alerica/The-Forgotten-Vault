@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore;
 public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerInputActions inputActions;
@@ -8,6 +9,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool JumpPressed { get; private set; }
     public bool JumpHeld { get; private set; }
     public bool DashPressed { get; private set; }
+    public bool AttackPressed { get; private set; }
 
     private void Awake()
     {
@@ -35,12 +37,16 @@ public class PlayerInputHandler : MonoBehaviour
 
         inputActions.Player.Dash.performed += ctx => 
             DashPressed = true;
+
+        inputActions.Player.Attack.performed += ctx =>
+            AttackPressed = true;
     }
 
     private void Update()
     {
         JumpHeld = inputActions.Player.Jump.IsPressed();
         DashPressed = false;
+        AttackPressed = false;
     }
 
     private void OnDisable()

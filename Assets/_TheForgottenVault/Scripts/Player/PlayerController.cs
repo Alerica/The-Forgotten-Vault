@@ -8,16 +8,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameConfig gameConfig;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Animator  animator;
-
     private CharacterController controller;
     private PlayerInputHandler input;
-
     private Vector3 velocity;
-
     private float verticalVelocity;
     private PlayerGroundCheck groundCheck;
     private PlayerJump jump;
     private PlayerDash dash;
+    private PlayerCombat combat;
 
     private void Awake()
     {
@@ -26,6 +24,7 @@ public class PlayerController : MonoBehaviour
         dash = GetComponent<PlayerDash>();
         controller = GetComponent<CharacterController>();
         input = GetComponent<PlayerInputHandler>();
+        combat = GetComponent<PlayerCombat>();
     }
 
     private void Update()
@@ -35,6 +34,11 @@ public class PlayerController : MonoBehaviour
 
         jump.HandleJump(ref verticalVelocity);
         dash.HandleDash(ref velocity);
+
+        if (input.AttackPressed)
+        {
+            combat.Attack();
+        }
 
         ApplyGravity();
 
