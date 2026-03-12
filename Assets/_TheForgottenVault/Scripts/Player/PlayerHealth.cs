@@ -4,6 +4,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHP = 100;
     [SerializeField] private float invincibilityTime = 0.6f;
+    private Animator animator;
 
     public int currentHP;
     private float invincibleTimer;
@@ -15,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         currentHP = maxHP;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -31,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
         currentHP -= damage;
 
         Debug.Log("Player took damage: " + damage);
+        animator.SetTrigger("Hit");
 
         PlayerKnockback knockback = GetComponent<PlayerKnockback>();
         if (knockback != null)
